@@ -55,6 +55,9 @@ class Whack:
         self.moles = [self.mole, self.mole2, self.mole3, self.mole4, self.mole5, self.mole6, self.mole7, self.mole8, self.mole9]
 
         self.timer = 0.0
+        self.mole_timer = 0.0
+        self.selectedMole = 0
+        self.first_time = True
     # Draw a solid blue circle in the center
     def print_moles(self):
         for mole in self.moles:
@@ -71,13 +74,12 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked:
-                mole._set_active_()
-                print("Hit!")
+                mole._set_active()
                 break
 
     def _make_mole_alive(self):
-        selectedMole = random.randint(0, 8)
-        self.moles[selectedMole].image = pygame.image.load("images/mole.png")
+        self.selectedMole = random.randint(0, 8)
+        self.moles[self.selectedMole].image = pygame.image.load("images/mole.png")
 
     def _check_events(self):
         # Did the user click the window close button?
@@ -88,13 +90,23 @@ class Whack:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_mole(mouse_pos)
 
+    def _check_time(self):
+        self.mole_timer += 0.01
+        if self.mole_timer >= 2.0:
+            self.moles[self.selectedMole]._set_active()
+            self.mole_timer = 0.0
+
+
     def run_game(self):
         while True:
             self._check_events()
             self._update_screen()
-            print(self.timer)
+            self._check_time()
             self.timer += 0.01
-            if(self.timer >= 2):
+            if self.first_time:
+                self._make_mole_alive()
+                self.first_time = False
+            if(self.timer >= 2 and self.first_time == False):
                 self._make_mole_alive()
                 self.timer = 0.0
         # Done! Time to quit.

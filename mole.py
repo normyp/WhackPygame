@@ -11,12 +11,12 @@ class Mole(Sprite):
         self.image = pygame.image.load("images/mole.png")
         self.rect = self.image.get_rect()
 
-        self._set_active_()
+        self._set_active()
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
 
-    def _set_active_(self):
+    def _set_active(self):
         self.image.fill((0, 100, 0))
 
 
