@@ -1,4 +1,5 @@
 import sys
+import time
 
 import pygame
 
@@ -52,6 +53,8 @@ class Whack:
         self.mole9.rect.y += 350
 
         self.moles = [self.mole, self.mole2, self.mole3, self.mole4, self.mole5, self.mole6, self.mole7, self.mole8, self.mole9]
+
+        self.timer = 0.0
     # Draw a solid blue circle in the center
     def print_moles(self):
         for mole in self.moles:
@@ -89,8 +92,11 @@ class Whack:
         while True:
             self._check_events()
             self._update_screen()
-            #if(timer >= 2):
-                #self._make_mole_alive()
+            print(self.timer)
+            self.timer += 0.01
+            if(self.timer >= 2):
+                self._make_mole_alive()
+                self.timer = 0.0
         # Done! Time to quit.
         pygame.quit()
 
