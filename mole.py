@@ -18,7 +18,11 @@ class Mole(Sprite):
     def blitme(self):
         self.screen.blit(self.image, self.rect)
 
+    def is_alive(self):
+        return self.alive
+
     def clear(self):
         self.image.fill((0, 100, 0))
+        self.alive = False
 
 
