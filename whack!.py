@@ -1,10 +1,11 @@
 import sys
 
 import pygame
-pygame.init()
 
 from settings import Settings
 from mole import Mole
+
+import random
 
 class Whack:
 
@@ -12,7 +13,7 @@ class Whack:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode([500, 500])
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
         self.mole = Mole(self)
         self.mole2 = Mole(self)
@@ -64,9 +65,17 @@ class Whack:
         pygame.display.flip()
 
     def _check_mole(self, mouse_pos):
-        mole_clicked = self.moles.rect.collidepoint(mouse_pos)
-        if mole_clicked:
-            print("Hit!")
+        for mole in self.moles:
+            mole_clicked = mole.rect.collidepoint(mouse_pos)
+            if mole_clicked:
+                mole._set_active_()
+                print("Hit!")
+                break
+
+    def _make_mole_alive(self):
+        selectedMole = random.randint(0, 8)
+        self.moles[selectedMole].image = pygame.image.load("images/mole.png")
+
     def _check_events(self):
         # Did the user click the window close button?
         for event in pygame.event.get():
@@ -80,6 +89,8 @@ class Whack:
         while True:
             self._check_events()
             self._update_screen()
+            #if(timer >= 2):
+                #self._make_mole_alive()
         # Done! Time to quit.
         pygame.quit()
 
