@@ -8,6 +8,9 @@ from mole import Mole
 
 import random
 
+def _seconds_since_epoch():
+    return time.mktime(time.localtime())
+
 class Whack:
 
     def __init__(self):
@@ -53,11 +56,10 @@ class Whack:
         self.mole9.rect.y += 350
 
         self.moles = [self.mole, self.mole2, self.mole3, self.mole4, self.mole5, self.mole6, self.mole7, self.mole8, self.mole9]
-
         self.timer = 0.0
         self.mole_timer = 0.0
         self.selectedMole = 0
-        self.first_time = True
+        self.time_since_last_mole = _seconds_since_epoch()
     # Draw a solid blue circle in the center
     def print_moles(self):
         for mole in self.moles:
@@ -74,11 +76,13 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked:
-                mole._set_active()
+                mole.clear()
                 break
 
     def _make_mole_alive(self):
         self.selectedMole = random.randint(0, 8)
+        self.moles[self.selectedMole].m_time = _seconds_since_epoch()
+        print(self.moles[self.selectedMole].m_time)
         self.moles[self.selectedMole].image = pygame.image.load("images/mole.png")
 
     def _check_events(self):
@@ -90,28 +94,25 @@ class Whack:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_mole(mouse_pos)
 
-    def _check_time(self):
-        self.mole_timer += 0.01
-        if self.mole_timer >= 2.0:
-            self.moles[self.selectedMole]._set_active()
-            self.mole_timer = 0.0
-
-
     def run_game(self):
+        self._make_mole_alive()
         while True:
             self._check_events()
+            current_time = _seconds_since_epoch()
+
+            #Clear old moles
+            for mole in self.moles:
+                if current_time - mole.m_time >= 2.0:
+                    mole.clear()
+
+            if current_time - self.time_since_last_mole >= 1.0:
+                self._make_mole_alive()
+                self.time_since_last_mole = current_time
             self._update_screen()
-            self._check_time()
-            self.timer += 0.01
-            if self.first_time:
-                self._make_mole_alive()
-                self.first_time = False
-            if(self.timer >= 2 and self.first_time == False):
-                self._make_mole_alive()
-                self.timer = 0.0
         # Done! Time to quit.
         pygame.quit()
 
 if __name__ == '__main__':
     w = Whack()
     w.run_game()
+
