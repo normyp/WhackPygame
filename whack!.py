@@ -49,17 +49,12 @@ class Whack:
 
         self.mole9.rect.x += 375
         self.mole9.rect.y += 350
+
+        self.moles = [self.mole, self.mole2, self.mole3, self.mole4, self.mole5, self.mole6, self.mole7, self.mole8, self.mole9]
     # Draw a solid blue circle in the center
     def print_moles(self):
-        self.mole.blitme()
-        self.mole2.blitme()
-        self.mole3.blitme()
-        self.mole4.blitme()
-        self.mole5.blitme()
-        self.mole6.blitme()
-        self.mole7.blitme()
-        self.mole8.blitme()
-        self.mole9.blitme()
+        for mole in self.moles:
+            mole.blitme()
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
@@ -68,20 +63,23 @@ class Whack:
         # Flip the display
         pygame.display.flip()
 
-
+    def _check_mole(self, mouse_pos):
+        mole_clicked = self.moles.rect.collidepoint(mouse_pos)
+        if mole_clicked:
+            print("Hit!")
     def _check_events(self):
         # Did the user click the window close button?
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
-    #def _change_mole_pos(self):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_mole(mouse_pos)
 
     def run_game(self):
         while True:
             self._check_events()
             self._update_screen()
-            #self._change_mole_pos()
         # Done! Time to quit.
         pygame.quit()
 
