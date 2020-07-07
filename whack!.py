@@ -4,14 +4,19 @@ import pygame
 pygame.init()
 
 from settings import Settings
+from mole import Mole
 
 class Whack:
 
     def __init__(self):
         pygame.init()
         self.settings = Settings()
-        # Set up the drawing window
+
         self.screen = pygame.display.set_mode([500, 500])
+
+        self.mole = Mole(self)
+        # Set up the drawing window
+
 
     # Draw a solid blue circle in the center
     def print_moles(self):
@@ -27,23 +32,21 @@ class Whack:
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
+        self.mole.blitme()
+        # Flip the display
+        pygame.display.flip()
+
+
+    def _check_events(self):
+        # Did the user click the window close button?
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
 
     def run_game(self):
         while True:
-
-            # Did the user click the window close button?
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-
-            # Fill the background with white
-            self.screen.fill((255, 255, 255))
-
+            self._check_events()
             self._update_screen()
-
-            # Flip the display
-            pygame.display.flip()
-
         # Done! Time to quit.
         pygame.quit()
 
