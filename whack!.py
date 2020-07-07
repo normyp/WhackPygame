@@ -19,43 +19,15 @@ class Whack:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
-        self.mole = Mole(self)
-        self.mole2 = Mole(self)
-        self.mole3 = Mole(self)
-        self.mole4 = Mole(self)
-        self.mole5 = Mole(self)
-        self.mole6 = Mole(self)
-        self.mole7 = Mole(self)
-        self.mole8 = Mole(self)
-        self.mole9 = Mole(self)
-        self.mole.rect.x += 25
-        self.mole.rect.y += 0
+        self.moles = [Mole(self) for i in range(9)]
+        x_values = [25, 200, 375]
+        y_values = [0, 175, 350]
+        for i in range(0, 9):
+            mole = Mole(self)
+            mole.rect.x = x_values[i % 3]
+            mole.rect.y = y_values[i // 3]
+            self.moles[i] = mole
 
-        self.mole2.rect.x += 200
-        self.mole2.rect.y += 0
-
-        self.mole3.rect.x += 375
-        self.mole3.rect.y += 0
-
-        self.mole4.rect.x += 25
-        self.mole4.rect.y += 175
-
-        self.mole5.rect.x += 200
-        self.mole5.rect.y += 175
-
-        self.mole6.rect.x += 375
-        self.mole6.rect.y += 175
-
-        self.mole7.rect.x += 25
-        self.mole7.rect.y += 350
-
-        self.mole8.rect.x += 200
-        self.mole8.rect.y += 350
-
-        self.mole9.rect.x += 375
-        self.mole9.rect.y += 350
-
-        self.moles = [self.mole, self.mole2, self.mole3, self.mole4, self.mole5, self.mole6, self.mole7, self.mole8, self.mole9]
         self.timer = 0.0
         self.mole_timer = 0.0
         self.selectedMole = 0
@@ -98,16 +70,19 @@ class Whack:
         self._make_mole_alive()
         while True:
             self._check_events()
+
             current_time = _seconds_since_epoch()
 
-            #Clear old moles
+            # Clear old moles
             for mole in self.moles:
                 if current_time - mole.m_time >= 2.0:
                     mole.clear()
 
+            # Spawn a mole every second
             if current_time - self.time_since_last_mole >= 1.0:
                 self._make_mole_alive()
                 self.time_since_last_mole = current_time
+
             self._update_screen()
         # Done! Time to quit.
         pygame.quit()
