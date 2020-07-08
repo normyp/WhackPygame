@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388d56ed-cf41-4978-b070-7fa84638fb4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/game_stats.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scoreboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mole.py" beforeDir="false" afterPath="$PROJECT_DIR$/mole.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whack!.py" beforeDir="false" afterPath="$PROJECT_DIR$/whack!.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,12 +48,34 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.whack!">
+    <configuration name="scoreboard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Whack!" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scoreboard.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="whack!" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Whack!" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -76,6 +100,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.whack!" />
+        <item itemvalue="Python.scoreboard" />
       </list>
     </recent_temporary>
   </component>
@@ -99,42 +124,42 @@
       <screen x="1920" y="0" width="1536" height="824" />
     </state>
     <state x="2469" y="167" key="FileChooserDialogImpl/1920.0.1536.824/0.0.1536.824@1920.0.1536.824" timestamp="1590505088474" />
-    <state width="1515" height="203" key="GridCell.Tab.0.bottom" timestamp="1594133051313">
+    <state width="1515" height="203" key="GridCell.Tab.0.bottom" timestamp="1594203867663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="203" key="GridCell.Tab.0.bottom/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594133051313" />
+    <state width="1515" height="203" key="GridCell.Tab.0.bottom/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203867663" />
     <state width="1515" height="203" key="GridCell.Tab.0.bottom/1920.0.1536.824/0.0.1536.824@1920.0.1536.824" timestamp="1594121249750" />
-    <state width="1515" height="203" key="GridCell.Tab.0.center" timestamp="1594133051313">
+    <state width="1515" height="203" key="GridCell.Tab.0.center" timestamp="1594203867663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="203" key="GridCell.Tab.0.center/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594133051313" />
+    <state width="1515" height="203" key="GridCell.Tab.0.center/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203867663" />
     <state width="1515" height="203" key="GridCell.Tab.0.center/1920.0.1536.824/0.0.1536.824@1920.0.1536.824" timestamp="1594121249750" />
-    <state width="1515" height="203" key="GridCell.Tab.0.left" timestamp="1594133051312">
+    <state width="1515" height="203" key="GridCell.Tab.0.left" timestamp="1594203867663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="203" key="GridCell.Tab.0.left/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594133051312" />
+    <state width="1515" height="203" key="GridCell.Tab.0.left/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203867663" />
     <state width="1515" height="203" key="GridCell.Tab.0.left/1920.0.1536.824/0.0.1536.824@1920.0.1536.824" timestamp="1594121249750" />
-    <state width="1515" height="203" key="GridCell.Tab.0.right" timestamp="1594133051313">
+    <state width="1515" height="203" key="GridCell.Tab.0.right" timestamp="1594203867663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="203" key="GridCell.Tab.0.right/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594133051313" />
+    <state width="1515" height="203" key="GridCell.Tab.0.right/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203867663" />
     <state width="1515" height="203" key="GridCell.Tab.0.right/1920.0.1536.824/0.0.1536.824@1920.0.1536.824" timestamp="1594121249750" />
-    <state width="1515" height="252" key="GridCell.Tab.1.bottom" timestamp="1594119339310">
+    <state width="1515" height="252" key="GridCell.Tab.1.bottom" timestamp="1594203739997">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="252" key="GridCell.Tab.1.bottom/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594119339310" />
-    <state width="1515" height="252" key="GridCell.Tab.1.center" timestamp="1594119339310">
+    <state width="1515" height="252" key="GridCell.Tab.1.bottom/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203739997" />
+    <state width="1515" height="252" key="GridCell.Tab.1.center" timestamp="1594203739997">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="252" key="GridCell.Tab.1.center/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594119339310" />
-    <state width="1515" height="252" key="GridCell.Tab.1.left" timestamp="1594119339310">
+    <state width="1515" height="252" key="GridCell.Tab.1.center/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203739997" />
+    <state width="1515" height="252" key="GridCell.Tab.1.left" timestamp="1594203739997">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="252" key="GridCell.Tab.1.left/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594119339310" />
-    <state width="1515" height="252" key="GridCell.Tab.1.right" timestamp="1594119339310">
+    <state width="1515" height="252" key="GridCell.Tab.1.left/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203739997" />
+    <state width="1515" height="252" key="GridCell.Tab.1.right" timestamp="1594203739997">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="252" key="GridCell.Tab.1.right/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594119339310" />
+    <state width="1515" height="252" key="GridCell.Tab.1.right/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594203739997" />
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594122208449">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -147,16 +172,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/1920.0.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594122444811" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/whack!.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

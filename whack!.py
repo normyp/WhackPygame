@@ -5,6 +5,8 @@ import pygame
 
 from settings import Settings
 from mole import Mole
+from game_stats import GameStats
+from scoreboard import Scoreboard
 
 import random
 
@@ -16,9 +18,11 @@ class Whack:
     def __init__(self):
         pygame.init()
         self.settings = Settings()
+        self.stats = GameStats(self)
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
+        self.sb = Scoreboard(self)
         self.moles = [Mole(self) for i in range(9)]
         x_values = [25, 200, 375]
         y_values = [0, 175, 350]
@@ -33,6 +37,8 @@ class Whack:
         self.selectedMole = 0
         self.time_since_last_mole = _seconds_since_epoch()
     # Draw a solid blue circle in the center
+
+
     def print_moles(self):
         for mole in self.moles:
             mole.blitme()
@@ -41,6 +47,8 @@ class Whack:
         self.screen.fill(self.settings.bg_color)
         self.print_moles()
 
+        self.sb.show_score()
+
         # Flip the display
         pygame.display.flip()
 
@@ -48,6 +56,8 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked:
+                self.stats.score += self.settings.mole_points
+                self.sb.prep_score()
                 mole.clear()
                 break
 
@@ -70,15 +80,16 @@ class Whack:
 
     def run_game(self):
         self._make_mole_alive()
+        self.stats.reset_stats()
+        self.settings.initialise_dynamic_settings()
         while True:
             self._check_events()
 
             current_time = _seconds_since_epoch()
-            
+
             # Clear old moles
             for mole in self.moles:
                 random_time = random.randint(3, 6)
-                print("Random time is ", random_time)
                 if current_time - mole.m_time >= random_time:
                     mole.clear()
 
