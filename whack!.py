@@ -7,6 +7,7 @@ from settings import Settings
 from mole import Mole
 from game_stats import GameStats
 from scoreboard import Scoreboard
+from cloud import Cloud
 
 import random
 
@@ -24,6 +25,10 @@ class Whack:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
+        self.cloud = Cloud(self)
+        self.cloud.rect.x = 200
+        self.cloud.rect.y = 0
+
         self.image = pygame.image.load("images/grass.png")
         self.rect = self.image.get_rect()
 
@@ -40,6 +45,8 @@ class Whack:
         self.timer = 0.0
         self.mole_timer = 0.0
         self.selectedMole = 0
+        self.making_alpha = False
+        self.making_visible = False
         self.time_since_last_mole = _seconds_since_epoch()
 
     # Draw a solid blue circle in the center
@@ -48,13 +55,17 @@ class Whack:
         for mole in self.moles:
             mole.blitme()
 
+    def print_cloud(self):
+        self.cloud.blitme()
+
     def blitme(self):
         self.screen.blit(self.image, self.rect)
 
     def _update_screen(self):
         self.blitme()
         self.print_moles()
-
+        if self.making_alpha:
+            self.cloud.make_alpha()
         self.sb.show_score()
 
         # Flip the display
@@ -63,13 +74,13 @@ class Whack:
     def _check_mole(self, mouse_pos):
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
-            if mole_clicked:
-                if mole.is_alive() == True:
-                    # Increase score once and then clear the mole
-                    self.stats.score += self.settings.mole_points
-                    self.sb.prep_score()
-                    mole.clear()
-                    break
+            if mole_clicked and mole.is_alive():
+                self.making_alpha = True
+            # Increase score once and then clear the mole
+                self.stats.score += self.settings.mole_points
+                self.sb.prep_score()
+                mole.clear()
+                break
 
     def _make_mole_alive(self):
         # Randomly picks a mole to spawn
@@ -100,7 +111,7 @@ class Whack:
 
             # Clear old moles
             for mole in self.moles:
-                random_time = random.randint(3, 6)
+                random_time = random.randint(1, 6)
                 if current_time - mole.m_time >= random_time:
                     mole.clear()
 
