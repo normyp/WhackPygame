@@ -10,8 +10,10 @@ from scoreboard import Scoreboard
 
 import random
 
+
 def _seconds_since_epoch():
     return time.mktime(time.localtime())
+
 
 class Whack:
 
@@ -36,8 +38,8 @@ class Whack:
         self.mole_timer = 0.0
         self.selectedMole = 0
         self.time_since_last_mole = _seconds_since_epoch()
-    # Draw a solid blue circle in the center
 
+    # Draw a solid blue circle in the center
 
     def print_moles(self):
         for mole in self.moles:
@@ -56,16 +58,20 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked:
-                self.stats.score += self.settings.mole_points
-                self.sb.prep_score()
-                mole.clear()
-                break
+
+                if mole.is_alive() == True:
+                    # Increase score once and then clear the mole
+                    self.stats.score += self.settings.mole_points
+                    self.sb.prep_score()
+                    mole.clear()
+                    break
 
     def _make_mole_alive(self):
-        #Randomly picks a mole to spawn
+        # Randomly picks a mole to spawn
         self.selectedMole = random.randint(0, 8)
-        #Time since spawn
+        # Time since spawn
         self.moles[self.selectedMole].m_time = _seconds_since_epoch()
+        self.moles[self.selectedMole].alive = True
         if self.moles[self.selectedMole].is_alive:
             self.moles[self.selectedMole].image = pygame.image.load("images/mole.png")
 
@@ -102,7 +108,7 @@ class Whack:
         # Done! Time to quit.
         pygame.quit()
 
+
 if __name__ == '__main__':
     w = Whack()
     w.run_game()
-

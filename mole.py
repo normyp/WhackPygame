@@ -7,7 +7,7 @@ class Mole(Sprite):
     def __init__(self, w_game):
         super().__init__()
         self.m_time = 0
-        self.alive = True
+        self.alive = False
         self.screen = w_game.screen
 
         self.image = pygame.image.load("images/mole.png")
