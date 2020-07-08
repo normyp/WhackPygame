@@ -64,8 +64,6 @@ class Whack:
     def _update_screen(self):
         self.blitme()
         self.print_moles()
-        if self.making_alpha:
-            self.cloud.make_alpha()
         self.sb.show_score()
 
         # Flip the display
@@ -75,7 +73,6 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked and mole.is_alive():
-                self.making_alpha = True
             # Increase score once and then clear the mole
                 self.stats.score += self.settings.mole_points
                 self.sb.prep_score()
@@ -109,16 +106,18 @@ class Whack:
 
             current_time = _seconds_since_epoch()
 
-            # Clear old moles
-            for mole in self.moles:
-                random_time = random.randint(1, 6)
-                if current_time - mole.m_time >= random_time:
-                    mole.clear()
-
             # Spawn a mole every second
             if current_time - self.time_since_last_mole >= 1.0:
                 self._make_mole_alive()
                 self.time_since_last_mole = current_time
+
+             # Clear old moles
+            for mole in self.moles:
+                random_time = random.randint(4, 6)
+                if current_time - mole.m_time >= random_time:
+                    mole.clear()
+                    self.stats.score - self.settings.mole_points
+                    self.sb.prep_score()
 
             self._update_screen()
         # Done! Time to quit.
