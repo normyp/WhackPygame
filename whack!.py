@@ -24,6 +24,9 @@ class Whack:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
+        self.image = pygame.image.load("images/grass.png")
+        self.rect = self.image.get_rect()
+
         self.sb = Scoreboard(self)
         self.moles = [Mole(self) for i in range(9)]
         x_values = [25, 200, 375]
@@ -45,8 +48,11 @@ class Whack:
         for mole in self.moles:
             mole.blitme()
 
+    def blitme(self):
+        self.screen.blit(self.image, self.rect)
+
     def _update_screen(self):
-        self.screen.fill(self.settings.bg_color)
+        self.blitme()
         self.print_moles()
 
         self.sb.show_score()
@@ -58,7 +64,6 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked:
-
                 if mole.is_alive() == True:
                     # Increase score once and then clear the mole
                     self.stats.score += self.settings.mole_points

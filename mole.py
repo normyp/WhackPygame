@@ -22,7 +22,7 @@ class Mole(Sprite):
         return self.alive
 
     def clear(self):
-        self.image.fill((0, 100, 0))
+        self.image.fill((0, 0, 0, 0))
         self.alive = False
 
 

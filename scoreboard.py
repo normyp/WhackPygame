@@ -10,7 +10,7 @@ class Scoreboard:
         self.stats = w_game.stats
         self.settings = w_game.settings
 
-        self.text_colour = (30, 30, 30)
+        self.text_colour = (255, 255, 255)
         self.font = pygame.font.SysFont(None, 48)
 
         self.prep_score()
@@ -20,7 +20,7 @@ class Scoreboard:
         rounded_score = round(self.stats.score, -1)
         score_str = "Score: {:,}".format(rounded_score)
         self.score_image = self.font.render(score_str, True,
-                                            self.text_colour, self.settings.bg_color)
+                                            self.text_colour, None)
         #Display the score at the top right of the screen.
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
