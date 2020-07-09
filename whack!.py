@@ -114,9 +114,9 @@ class Whack:
              # Clear old moles
             for mole in self.moles:
                 random_time = random.randint(4, 6)
-                if current_time - mole.m_time >= random_time:
+                if current_time - mole.m_time >= random_time and mole.is_alive():
                     mole.clear()
-                    self.stats.score - self.settings.mole_points
+                    self.stats.score -= self.settings.mole_points
                     self.sb.prep_score()
 
             self._update_screen()
