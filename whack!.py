@@ -73,7 +73,7 @@ class Whack:
         for mole in self.moles:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked and mole.is_alive():
-            # Increase score once and then clear the mole
+                # Increase score once and then clear the mole
                 self.stats.score += self.settings.mole_points
                 self.sb.prep_score()
                 mole.clear()
@@ -111,13 +111,22 @@ class Whack:
                 self._make_mole_alive()
                 self.time_since_last_mole = current_time
 
-             # Clear old moles
+            # Clear old moles
             for mole in self.moles:
                 random_time = random.randint(4, 6)
-                if current_time - mole.m_time >= random_time and mole.is_alive():
+                if current_time - mole.m_time >= random_time and mole.is_alive():  # Current time minus time since mole spawned
+                    # Also checks to see whether current mole is alive so it doesn't act on all moles
                     mole.clear()
                     self.stats.score -= self.settings.mole_points
                     self.sb.prep_score()
+                self.sb.check_high_score()
+            f = open("highscore.txt", "r")
+            old_high_score = f.read()
+            f.close()
+            if int(self.stats.high_score) > int(old_high_score):
+                f = open("highscore.txt", "w")
+                f.write(str(self.stats.high_score))
+                old_high_score = self.stats.high_score
 
             self._update_screen()
         # Done! Time to quit.

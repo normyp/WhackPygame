@@ -2,9 +2,6 @@ import pygame
 import time
 from pygame.sprite import Sprite
 
-def _seconds_since_epoch():
-    return time.mktime(time.localtime())
-
 class Mole(Sprite):
 
     def __init__(self, w_game):
