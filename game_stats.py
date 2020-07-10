@@ -9,6 +9,11 @@ class GameStats:
         self.high_score = f.read()
         f.close()
 
+    def reset_stats(self):
+        self.lives_left = self.settings.lives_limit
+        self.score = 0
+        self.level = 1
+
     def get_high_score(self):
         return self.high_score
 
@@ -20,8 +25,3 @@ class GameStats:
 
     def get_rounded_score(self):
         return round(self.score, -1)
-
-    def reset_stats(self):
-        self.lives_left = self.settings.lives_limit
-        self.score = 0
-        self.level = 1
