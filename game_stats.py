@@ -19,6 +19,11 @@ class GameStats:
         f = open("highscore.txt", "r")
         self.old_high_score = int(f.read())
         f.close()
+        if int(self.get_high_score()) > int(self.old_high_score):
+            f = open("highscore.txt", "w")
+            self.old_high_score = self.get_high_score()
+            f.write(str(self.old_high_score))
+            f.close()
 
     def get_high_score(self):
         return self.high_score
