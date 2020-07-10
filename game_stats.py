@@ -18,6 +18,9 @@ class GameStats:
             return True
         return False
 
+    def get_rounded_score(self):
+        return round(self.score, -1)
+
     def reset_stats(self):
         self.lives_left = self.settings.lives_limit
         self.score = 0
