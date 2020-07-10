@@ -105,7 +105,7 @@ class Whack:
             # Clear old moles
             for mole in self.moles:
                 if mole.cleared(current_time):
-                    self.stats.score -= self.settings.mole_points
+                    self.stats.decrement_game_score(self.settings.mole_points)
                     self.sb.prep_score()
                 self.sb.check_high_score()
             f = open("highscore.txt", "r")

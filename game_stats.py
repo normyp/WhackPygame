@@ -28,3 +28,6 @@ class GameStats:
 
     def increment_game_score(self, points):
         self.score += points
+
+    def decrement_game_score(self, points):
+        self.score -= points
