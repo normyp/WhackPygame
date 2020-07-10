@@ -65,7 +65,7 @@ class Whack:
             mole_clicked = mole.rect.collidepoint(mouse_pos)
             if mole_clicked and mole.is_alive():
                 # Increase score once and then clear the mole
-                self.stats.score += self.settings.mole_points
+                self.stats.increment_game_score(self.settings.mole_points)
                 self.sb.prep_score()
                 mole.clear()
                 break

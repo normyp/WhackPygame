@@ -25,3 +25,6 @@ class GameStats:
 
     def get_rounded_score(self):
         return round(self.score, -1)
+
+    def increment_game_score(self, points):
+        self.score += points
