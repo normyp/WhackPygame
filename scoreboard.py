@@ -29,7 +29,7 @@ class Scoreboard:
 
     def prep_high_score(self):
         """Turn the high score into a rendered image."""
-        high_score = self.stats.high_score
+        high_score = self.stats.get_high_score()
         high_score_str = "High Score: {:}".format(high_score)
         self.high_score_image = self.font.render(high_score_str, True,
                                                  self.text_colour, None)

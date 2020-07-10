@@ -13,6 +13,9 @@ class GameStats:
         if not self.high_score:
             self.high_score = 0
 
+    def get_high_score(self):
+        return self.high_score
+
     def reset_stats(self):
         self.lives_left = self.settings.lives_limit
         self.score = 0
