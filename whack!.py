@@ -72,12 +72,12 @@ class Whack:
 
     def _make_mole_alive(self):
         # Randomly picks a mole to spawn
-        self.selectedMole = random.randint(0, 8)
+        selectedMole = random.randint(0, 8)
         # Time since spawn
-        self.moles[self.selectedMole].m_time = _seconds_since_epoch()
-        self.moles[self.selectedMole].alive = True
-        if self.moles[self.selectedMole].is_alive:
-            self.moles[self.selectedMole].image = pygame.image.load("images/mole.png")
+        self.moles[selectedMole].m_time = _seconds_since_epoch()
+        self.moles[selectedMole].alive = True
+        if self.moles[selectedMole].is_alive:
+            self.moles[selectedMole].image = pygame.image.load("images/mole.png")
 
     def _check_events(self):
         # Did the user click the window close button?
