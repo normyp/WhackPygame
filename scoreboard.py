@@ -45,8 +45,7 @@ class Scoreboard:
 
     def check_high_score(self):
         """Check to see if there's a new high score."""
-        if not self.stats.high_score:
-            self.stats.high_score = 0
+        self.stats.clear_high_score()
         if self.stats.score > int(self.stats.high_score):
             self.stats.high_score = self.stats.score
             self.prep_high_score()
