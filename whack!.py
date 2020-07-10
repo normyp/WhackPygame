@@ -109,12 +109,12 @@ class Whack:
                     self.sb.prep_score()
                 self.sb.check_high_score()
             f = open("highscore.txt", "r")
-            old_high_score = f.read()
+            self.stats.old_high_score = f.read()
             f.close()
-            if int(self.stats.get_high_score()) > int(old_high_score):
+            if int(self.stats.get_high_score()) > int(self.stats.old_high_score):
                 f = open("highscore.txt", "w")
-                old_high_score = self.stats.get_high_score()
-                f.write(str(old_high_score))
+                self.stats.old_high_score = self.stats.get_high_score()
+                f.write(str(self.stats.old_high_score))
 
 
             self._update_screen()

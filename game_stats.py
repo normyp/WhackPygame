@@ -8,6 +8,7 @@ class GameStats:
         f = open("highscore.txt", "r")
         self.high_score = f.read()
         f.close()
+        self.old_high_score = self.high_score
 
     def reset_stats(self):
         self.lives_left = self.settings.lives_limit
