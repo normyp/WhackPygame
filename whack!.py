@@ -108,13 +108,12 @@ class Whack:
                     self.stats.decrement_game_score(self.settings.mole_points)
                     self.sb.prep_score()
                 self.sb.check_high_score()
-            f = open("highscore.txt", "r")
-            self.stats.old_high_score = f.read()
-            f.close()
+            self.stats.set_old_high_score()
             if int(self.stats.get_high_score()) > int(self.stats.old_high_score):
                 f = open("highscore.txt", "w")
                 self.stats.old_high_score = self.stats.get_high_score()
                 f.write(str(self.stats.old_high_score))
+                f.close()
 
 
             self._update_screen()
