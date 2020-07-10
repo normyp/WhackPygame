@@ -25,10 +25,6 @@ class Whack:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
-        self.cloud = Cloud(self)
-        self.cloud.rect.x = 200
-        self.cloud.rect.y = 0
-
         self.image = pygame.image.load("images/grass.png")
         self.rect = self.image.get_rect()
 
@@ -45,8 +41,6 @@ class Whack:
         self.timer = 0.0
         self.mole_timer = 0.0
         self.selectedMole = 0
-        self.making_alpha = False
-        self.making_visible = False
         self.time_since_last_mole = _seconds_since_epoch()
 
     # Draw a solid blue circle in the center
@@ -54,9 +48,6 @@ class Whack:
     def print_moles(self):
         for mole in self.moles:
             mole.blitme()
-
-    def print_cloud(self):
-        self.cloud.blitme()
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
