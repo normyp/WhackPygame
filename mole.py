@@ -7,7 +7,6 @@ class Mole(Sprite):
     def __init__(self, w_game):
         super().__init__()
         self.m_time = 0
-        self.alive = False
         self.screen = w_game.screen
 
         self.image = pygame.image.load("images/mole.png")
@@ -19,10 +18,10 @@ class Mole(Sprite):
         self.screen.blit(self.image, self.rect)
 
     def is_alive(self):
-        return self.alive
+        return self.m_time != 0
 
     def clear(self):
         self.image.fill((0, 0, 0, 0))
-        self.alive = False
+        self.m_time = 0
 
 
