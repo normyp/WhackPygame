@@ -113,8 +113,9 @@ class Whack:
             f.close()
             if int(self.stats.get_high_score()) > int(old_high_score):
                 f = open("highscore.txt", "w")
-                f.write(str(self.stats.get_high_score()))
                 old_high_score = self.stats.get_high_score()
+                f.write(str(old_high_score))
+
 
             self._update_screen()
         # Done! Time to quit.
