@@ -1,5 +1,6 @@
 import pygame
 import time
+import random
 from pygame.sprite import Sprite
 
 class Mole(Sprite):
@@ -23,5 +24,14 @@ class Mole(Sprite):
     def clear(self):
         self.image.fill((0, 0, 0, 0))
         self.m_time = 0
+
+    def cleared(self, current_time):
+        random_time = random.randint(4, 6)
+        if self.is_alive() and current_time - self.m_time >= random_time: # Current time minus time since mole spawned
+            self.clear()
+            return True
+        return False
+
+
 
 

@@ -104,10 +104,7 @@ class Whack:
 
             # Clear old moles
             for mole in self.moles:
-                random_time = random.randint(4, 6)
-                if mole.is_alive() and current_time - mole.m_time >= random_time:  # Current time minus time since mole spawned
-                    # Also checks to see whether current mole is alive so it doesn't act on all moles
-                    mole.clear()
+                if mole.cleared(current_time):
                     self.stats.score -= self.settings.mole_points
                     self.sb.prep_score()
                 self.sb.check_high_score()
